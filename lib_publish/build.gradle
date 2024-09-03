@@ -1,0 +1,18 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'groovy'
+}
+
+gradlePlugin {
+    plugins {
+        PublishPlugin{
+            id = 'PublishPlugin'
+            implementationClass = 'com.jw.common.lib.publish.PublishPlugin'
+        }
+    }
+}
+
+dependencies {
+    implementation libs.gradle
+}

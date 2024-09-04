@@ -49,15 +49,15 @@ class PublishPlugin implements Plugin<Project> {
                                 }
                             }
                             setSourceCodeFunc = { MavenPublication mavenPublication ->
-                                def srcTask = sub.task(["type": Jar.class], "sourcesJar")
+                                def srcTask = subProject.task(["type": Jar.class], "sourcesJar")
                                 srcTask.archiveClassifier.set("sources")
-                                srcTask.from(sub.sourceSets.main.allJava.getSrcDirs())
+                                srcTask.from(subProject.sourceSets.main.allJava.getSrcDirs())
                                 mavenPublication.artifact(srcTask)
                             }
-                        } else if (isAndroidLibProject(sub)) {
+                        } else if (isAndroidLibProject(subProject)) {
                             setComponentFunc = { MavenPublication mavenPublication ->
-                                sub.afterEvaluate {
-                                    def releaseComponent = sub.components.find {
+                                subProject.afterEvaluate {
+                                    def releaseComponent = subProject.components.find {
                                         it.name.toLowerCase().contains('release')
                                     }
                                     if (releaseComponent != null) {
@@ -66,9 +66,9 @@ class PublishPlugin implements Plugin<Project> {
                                 }
                             }
                             setSourceCodeFunc = { MavenPublication mavenPublication ->
-                                def srcTask = sub.task(["type": Jar.class], "sourcesJar")
+                                def srcTask = subProject.task(["type": Jar.class], "sourcesJar")
                                 srcTask.archiveClassifier.set("sources")
-                                srcTask.from(sub.android.sourceSets.main.java.getSourceFiles().getFiles())
+                                srcTask.from(subProject.android.sourceSets.main.java.getSourceFiles().getFiles())
                                 mavenPublication.artifact(srcTask)
                             }
                         } else

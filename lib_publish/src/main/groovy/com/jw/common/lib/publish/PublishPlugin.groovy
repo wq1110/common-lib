@@ -97,7 +97,7 @@ class PublishPlugin implements Plugin<Project> {
                             }
                         }
 
-                        subProject.task("type": MavenPublishTask, "publishToRemoteRepo") {
+                        subProject.task("type": PublishTask, "publishToRemoteRepo") {
                             it.config = subConfig
                         }
                     }

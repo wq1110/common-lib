@@ -7,7 +7,7 @@ plugins {
 gradlePlugin {
     plugins {
         PublishPlugin{
-            id = 'PublishPlugin'
+            id = 'com.jw.common.lib.publish.publish-plugin'
             implementationClass = 'com.jw.common.lib.publish.PublishPlugin'
         }
     }

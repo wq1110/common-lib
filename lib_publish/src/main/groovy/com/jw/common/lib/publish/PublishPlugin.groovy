@@ -90,7 +90,7 @@ class PublishPlugin implements Plugin<Project> {
                                 maven {
                                     url subConfig.getRepo()
                                     credentials {
-                                        username subConfig.getRepoUsrName()
+                                        username subConfig.getRepoUser()
                                         password subConfig.getRepoPsw()
                                     }
                                 }
